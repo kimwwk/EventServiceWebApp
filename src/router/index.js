@@ -1,12 +1,33 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import EventShow from "../views/EventShow.vue";
+import EventList from "../views/EventList.vue";
+import EventCreate from "../views/EventCreate.vue";
+import NotFound from "../views/NotFound.vue";
+import NetworkIssue from "../views/NetworkIssue.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
+    name: "event-list",
+    component: EventList,
+  },
+  {
+    path: "/event-show/:id",
+    name: "event-show",
+    component: EventShow,
+    props: true,
+  },
+  {
+    path: "/event-create",
+    name: "event-create",
+    component: EventCreate,
+  },
+  {
+    path: "/home",
     name: "Home",
     component: Home,
   },
@@ -18,6 +39,26 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue"),
+    alias: "/about-us2",
+  },
+  {
+    path: "/about-us",
+    redirect: "/about",
+  },
+  {
+    path: "/404",
+    name: "404",
+    component: NotFound,
+    props: true,
+  },
+  {
+    path: "/network-issue",
+    name: "network-issue",
+    component: NetworkIssue,
+  },
+  {
+    path: "*",
+    redirect: { name: "404", params: { resource: "page" } },
   },
 ];
 
