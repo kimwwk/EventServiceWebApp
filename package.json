@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node server.js",
+    "start": "concurrently \"npm run serve\" \"node server.js\"",
     "start-old": "concurrently \"npm run serve\" \"npm run json-server\"",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
