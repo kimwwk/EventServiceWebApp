@@ -44,3 +44,12 @@ git add .
 git commit -m "add server.js"
 git push --set-upstream origin <branch-name>
 ```
+
+### Merge that new branch
+
+```
+git checkout <main-branch-name>
+git merge <branch-name>
+git push
+git branch -d <branch-name>
+```
