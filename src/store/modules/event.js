@@ -19,10 +19,26 @@ export const mutations = {
 };
 
 export const actions = {
-  createEvent({ commit }, event) {
-    return EventService.postEvent(event).then(() => {
-      commit("ADD_EVENT", event);
-    });
+  createEvent({ commit, dispatch }, event) {
+    return EventService.postEvent(event)
+      .then(() => {
+        commit("ADD_EVENT", event);
+        // show success on notification
+        const notification = {
+          type: "success",
+          message: "New event created",
+        };
+        dispatch("notification/add", notification, { root: true });
+      })
+      .catch((error) => {
+        // show error on notification
+        const notification = {
+          type: "error",
+          message: "There was a problem fetching events: " + error.message,
+        };
+        dispatch("notification/add", notification, { root: true });
+        throw error;
+      });
   },
   fetchEvents({ commit }, { perPage, page }) {
     EventService.getEvents(perPage, page)
@@ -30,7 +46,12 @@ export const actions = {
         commit("SET_EVENTS", response.data);
       })
       .catch((error) => {
-        console.log("There was an error:", error.response);
+        // show error on next page
+        if (error.response && error.response.status == 404) {
+          router.push({ name: "404", params: { resource: "event" } });
+        } else {
+          router.push({ name: "network-issue" });
+        }
       });
   },
   fetchEvent({ commit, getters }, id) {
@@ -46,7 +67,7 @@ export const actions = {
           commit("SET_EVENT", response.data);
         })
         .catch((error) => {
-          console.log("There was an error:", error.response);
+          // show error on next page
           if (error.response && error.response.status == 404) {
             router.push({ name: "404", params: { resource: "event" } });
           } else {

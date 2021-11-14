@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <NarBar />
+    <NotificationContainer />
     <!-- <div id="nav">
       <router-link :to="{ name: 'Home' }">Home</router-link> |
       <router-link to="/about">About</router-link>
@@ -10,10 +11,12 @@
 </template>
 <script>
 import NarBar from "@/components/NavBar.vue";
+import NotificationContainer from "@/components/NotificationContainer.vue";
 
 export default {
   components: {
     NarBar,
+    NotificationContainer,
   },
 };
 </script>
