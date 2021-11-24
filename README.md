@@ -57,6 +57,14 @@ git push
 git branch -d <branch-name>
 ```
 
+### Create new branch with exisitng changes
+
+simply just:
+
+```
+git switch -f -c <branch-name>
+```
+
 ## Framework
 
 1. UI/UX
