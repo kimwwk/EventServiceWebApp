@@ -9,6 +9,13 @@ export const mutations = {
   SET_USER_DATA(state, userData) {
     state.user = userData;
     localStorage.setItem("user", JSON.stringify(userData));
+    UserService.authorize(userData.token);
+  },
+  LOGOUT(state) {
+    state.user = null;
+    localStorage.removeItem("user");
+    UserService.authorize(null);
+    location.reload();
   },
 };
 
@@ -19,7 +26,7 @@ export const actions = {
       const data = response.data;
 
       commit("SET_USER_DATA", data);
-      UserService.authSuccess(data.token);
+      // UserService.authSuccess(data.token);
       router.push({ name: "event-list" });
     });
   },
@@ -28,9 +35,12 @@ export const actions = {
       const data = response.data;
 
       commit("SET_USER_DATA", data);
-      UserService.authSuccess(data.token);
+      // UserService.authSuccess(data.token);
       router.push({ name: "event-list" });
     });
+  },
+  logout({ commit }) {
+    commit("LOGOUT");
   },
 };
 

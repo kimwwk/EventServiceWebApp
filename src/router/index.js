@@ -14,13 +14,14 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "event-list",
-    component: EventList,
-  },
-  {
-    path: "/home",
     name: "Home",
     component: Home,
+  },
+  {
+    path: "/event-list",
+    name: "event-list",
+    component: EventList,
+    meta: { requireAuth: true },
   },
   {
     path: "/register",
@@ -36,12 +37,14 @@ const routes = [
     path: "/event-show/:id",
     name: "event-show",
     component: EventShow,
+    meta: { requireAuth: true },
     props: true,
   },
   {
     path: "/event-create",
     name: "event-create",
     component: EventCreate,
+    meta: { requireAuth: true },
   },
 
   {
@@ -79,6 +82,15 @@ const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  const loggedIn = localStorage.getItem("user");
+
+  if (to.matched.some((record) => record.meta.requiresAuth) && !loggedIn) {
+    next("/");
+  }
+  next();
 });
 
 export default router;

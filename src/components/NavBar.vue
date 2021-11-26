@@ -6,6 +6,12 @@
       <router-link v-if="!loggedIn" :to="{ name: 'login-user' }">
         Login
       </router-link>
+      <!-- <router-link v-else :to="{ name: 'login-user' }" @click="logout">
+        Logout
+      </router-link> -->
+      <button v-else type="button" class="logoutButton" @click="logout">
+        Logout
+      </button>
       <!-- <router-link :to="{ name: 'event-create' }">Create</router-link> -->
     </nav>
   </div>
@@ -17,6 +23,11 @@ export default {
   name: "Home",
   computed: {
     ...authComputed,
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch("logout");
+    },
   },
 };
 </script>
