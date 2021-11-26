@@ -2,6 +2,8 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
+import apiClient from "@/services/ApiClient";
+
 import "nprogress/nprogress.css";
 
 // Register global components
@@ -36,6 +38,17 @@ new Vue({
       const userData = JSON.parse(userString); // parse user data into JSON
       this.$store.commit("SET_USER_DATA", userData); // restore user data with Vuex
     }
+
+    apiClient.interceptors.response.use(
+      (response) => response,
+      (error) => {
+        if (error.response.status === 401) {
+          // if we catch a 401 error
+          this.$store.commit("LOGOUT"); // force a log out
+        }
+        return Promise.reject(error); // reject the Promise, with the error as the reason
+      }
+    );
   },
   render: (h) => h(App),
 }).$mount("#app");

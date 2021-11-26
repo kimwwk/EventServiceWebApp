@@ -15,7 +15,6 @@ export const mutations = {
     state.user = null;
     localStorage.removeItem("user");
     UserService.authorize(null);
-    location.reload();
   },
 };
 
@@ -39,6 +38,7 @@ export const actions = {
   },
   logout({ commit }) {
     commit("LOGOUT");
+    router.push({ name: "/" });
   },
 };
 
