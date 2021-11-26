@@ -15,8 +15,9 @@
         v-model="password"
         class="field"
       />
-      <BaseButton type="submit" buttonClass="-fill-gradient">Submit</BaseButton>
+      <p class="-text-error">{{ error }}</p>
 
+      <BaseButton type="submit" buttonClass="-fill-gradient">Submit</BaseButton>
       <router-link to="/register">
         Don't have an account? Register.
       </router-link>
@@ -30,14 +31,20 @@ export default {
     return {
       email: "",
       password: "",
+      error: "",
     };
   },
   methods: {
     login() {
-      this.$store.dispatch("login", {
-        email: this.email,
-        password: this.password,
-      });
+      this.$store
+        .dispatch("login", {
+          email: this.email,
+          password: this.password,
+        })
+        .catch((err) => {
+          console.log(err);
+          this.error = err.response.data.error;
+        });
     },
   },
 };

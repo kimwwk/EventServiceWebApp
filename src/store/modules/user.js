@@ -26,7 +26,6 @@ export const actions = {
       const data = response.data;
 
       commit("SET_USER_DATA", data);
-      // UserService.authSuccess(data.token);
       router.push({ name: "event-list" });
     });
   },
@@ -35,7 +34,6 @@ export const actions = {
       const data = response.data;
 
       commit("SET_USER_DATA", data);
-      // UserService.authSuccess(data.token);
       router.push({ name: "event-list" });
     });
   },

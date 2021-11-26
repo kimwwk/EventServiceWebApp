@@ -23,6 +23,12 @@
         v-model="password"
         class="field"
       />
+      <ul>
+        <li v-for="(error, index) in errors" :key="index">
+          <p class="-text-error">{{ error }}</p>
+        </li>
+      </ul>
+
       <BaseButton type="submit" buttonClass="-fill-gradient">Submit</BaseButton>
 
       <router-link to="/login"> Already have an account? Login. </router-link>
@@ -36,15 +42,20 @@ export default {
       name: "",
       email: "",
       password: "",
+      errors: "",
     };
   },
   methods: {
     register() {
-      this.$store.dispatch("register", {
-        name: this.name,
-        email: this.email,
-        password: this.password,
-      });
+      this.$store
+        .dispatch("register", {
+          name: this.name,
+          email: this.email,
+          password: this.password,
+        })
+        .catch((err) => {
+          this.errors = err.response.data.errors;
+        });
     },
   },
 };
