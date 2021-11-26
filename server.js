@@ -25,6 +25,7 @@ app.get("/events", verifyToken, (req, res) => {
       res.sendStatus(401);
     } else {
       // otherwise, respond with private data
+      console.log(res);
       res.json(events.events);
     }
   });

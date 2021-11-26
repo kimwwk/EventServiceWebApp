@@ -17,10 +17,25 @@ export const actions = {
   register({ commit }, credentials) {
     return UserService.register(credentials).then((response) => {
       const data = response.data;
-      console.log(data);
+
       commit("SET_USER_DATA", data);
-      UserService.registerSuccess(data.token);
+      UserService.authSuccess(data.token);
       router.push({ name: "event-list" });
     });
+  },
+  login({ commit }, credentials) {
+    return UserService.login(credentials).then((response) => {
+      const data = response.data;
+
+      commit("SET_USER_DATA", data);
+      UserService.authSuccess(data.token);
+      router.push({ name: "event-list" });
+    });
+  },
+};
+
+export const getters = {
+  loggedIn: (state) => {
+    return !!state.user;
   },
 };

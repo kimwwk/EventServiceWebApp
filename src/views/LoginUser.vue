@@ -1,18 +1,10 @@
 <template>
   <div>
-    <form @submit.prevent="register">
-      <BaseInput
-        label="Name"
-        type="text"
-        placeholder="enter your name"
-        v-model="name"
-        class="field"
-      />
+    <form @submit.prevent="login">
       <BaseInput
         label="Email"
         type="email"
-        placeholder="enter your gmail"
-        pattern=".+@gmail\.com"
+        placeholder="enter your email"
         v-model="email"
         class="field"
       />
@@ -25,23 +17,24 @@
       />
       <BaseButton type="submit" buttonClass="-fill-gradient">Submit</BaseButton>
 
-      <router-link to="/login"> Already have an account? Login. </router-link>
+      <router-link to="/register">
+        Don't have an account? Register.
+      </router-link>
     </form>
   </div>
 </template>
+
 <script>
 export default {
   data() {
     return {
-      name: "",
       email: "",
       password: "",
     };
   },
   methods: {
-    register() {
-      this.$store.dispatch("register", {
-        name: this.name,
+    login() {
+      this.$store.dispatch("login", {
         email: this.email,
         password: this.password,
       });
@@ -49,8 +42,5 @@ export default {
   },
 };
 </script>
-<style scoped>
-.field {
-  margin-bottom: 24px;
-}
-</style>
+
+<style></style>

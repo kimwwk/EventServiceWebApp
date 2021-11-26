@@ -103,3 +103,6 @@ git switch -f -c <branch-name>
 
 1. mixins
 1. filters
+1. fix pagination
+1. vuetify
+1. fix login persistence issue

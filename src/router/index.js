@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import RegisterUser from "../views/RegisterUser.vue";
+import LoginUser from "../views/LoginUser.vue";
 import EventShow from "../views/EventShow.vue";
 import EventList from "../views/EventList.vue";
 import EventCreate from "../views/EventCreate.vue";
@@ -17,9 +18,19 @@ const routes = [
     component: EventList,
   },
   {
+    path: "/home",
+    name: "Home",
+    component: Home,
+  },
+  {
     path: "/register",
     name: "register-user",
     component: RegisterUser,
+  },
+  {
+    path: "/login",
+    name: "login-user",
+    component: LoginUser,
   },
   {
     path: "/event-show/:id",
@@ -32,11 +43,7 @@ const routes = [
     name: "event-create",
     component: EventCreate,
   },
-  {
-    path: "/home",
-    name: "Home",
-    component: Home,
-  },
+
   {
     path: "/about",
     name: "About",

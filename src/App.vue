@@ -140,6 +140,9 @@ textarea {
   line-height: 1.15;
   margin: 0;
 }
+.field {
+  margin-bottom: 24px;
+}
 button,
 input {
   overflow: visible;
