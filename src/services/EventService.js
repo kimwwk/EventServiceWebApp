@@ -1,36 +1,36 @@
+// temp static app event server
 import axios from "axios";
 import NProgress from "nprogress";
 
 const apiClient = axios.create({
-  baseURL: process.env.VUE_APP_SERVER_PATH,
-  withCredentials: false, // This is the default
+  baseURL: "./", // Changed to the local directory
   headers: {
-    Accept: "application/json",
     "Content-Type": "application/json",
   },
-  timeout: 10000,
 });
 
-// Showing very ez progress bar with interceptors
 apiClient.interceptors.request.use((config) => {
-  // Called on request
   NProgress.start();
   return config;
 });
 apiClient.interceptors.response.use((response) => {
-  // Called on response
   NProgress.done();
   return response;
 });
 
 export default {
-  getEvents(perPage, page) {
-    return apiClient.get("/events?_limit=" + perPage + "&_page=" + page);
+  async getEvents(perPage, page) {
+    const response = await apiClient.get("db.json");
+    return {
+      data: response.data.events.slice((page - 1) * perPage, page * perPage),
+    };
   },
-  getEvent(id) {
-    return apiClient.get("/events/" + id);
+  async getEvent(id) {
+    const response = await apiClient.get("db.json");
+    return response.data.events.find((event) => event.id === id);
   },
+  /* eslint-disable no-unused-vars */
   postEvent(event) {
-    return apiClient.post("/events", event);
+    // Do nothing
   },
 };

@@ -1,6 +1,7 @@
 .DS_Store
 node_modules
-/dist
+# unlock /dist because deploy as a static site  
+# /dist 
 
 # package lock files
 package-lock.json

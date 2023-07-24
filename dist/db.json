@@ -3,7 +3,7 @@
     {
       "id": 1,
       "title": "Beach Cleanup",
-      "date": "Aug 28 2018",
+      "date": "Aug 28 2024",
       "time": "10:00",
       "location": "Daytona Beach",
       "description": "Let's clean up this beach.",
@@ -31,7 +31,7 @@
     {
       "id": 2,
       "title": "Park Cleanup",
-      "date": "Nov 12 2018",
+      "date": "Nov 12 2024",
       "time": "12:00",
       "location": "132 N Magnolia Street, Orlando, Florida",
       "description": "We're going to clean up this park.",
@@ -51,7 +51,7 @@
     {
       "id": 3,
       "title": "Pet Adoption Day",
-      "date": "Dec 2 2018",
+      "date": "Jul 2 2024",
       "time": "12:00",
       "location": "132 N Magnolia Street, Orlando, Florida",
       "description": "Help animals find new homes.",
@@ -74,17 +74,27 @@
     },
     {
       "id": 2924882,
-      "category": "",
-      "organizer": {
-        "id": "abc123",
-        "name": "Adam"
-      },
-      "title": "",
-      "description": "",
-      "location": "",
-      "date": "",
-      "time": "",
-      "attendees": []
+      "title": "Home Cleanup",
+      "date": "Aug 28 2025",
+      "time": "10:00",
+      "location": "Daytona Home",
+      "description": "Let's clean up dog's home.",
+      "organizer": "Adam Jahr",
+      "category": "animal welfare",
+      "attendees": [
+        {
+          "id": "abc123",
+          "name": "Adam Jahr"
+        },
+        {
+          "id": "ghi789",
+          "name": "Beth Swanson"
+        },
+        {
+          "id": "jkl101",
+          "name": "Mary Gordon"
+        }
+      ]
     }
   ]
 }
