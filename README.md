@@ -1,77 +1,52 @@
-# EventServiceWebApp
+# Event Service Web App
 
-training from real-world-vue from Vue Mastery
+This project demonstrates building a web application for managing events using Vue.js and related technologies. It was developed as part of the "Real World Vue" course from Vue Mastery ([GitHub Link](https://github.com/Code-Pop/real-world-vue)). 
 
-[Github Link](https://github.com/Code-Pop/real-world-vue)
+## Features
 
-## Project setup
+*   **Event Management:**
+    *   Create new events with form validation.
+    *   List all events.
+    *   View individual event details.
+*   **State Management:** Utilizes Vuex for efficient state management with modules, actions, mutations, and getters.
+*   **User Interface:**
+    *   Modern UI/UX with `nprogress` for loading progress indication.
+    *   Form validation with `vuelidate`.
+    *   Date selection using `vuejs-datepicker`.
+*   **Code Quality:**
+    *   Uses `ESLint` and `Prettier` for consistent code style and error checking.
 
-```
-npm install
-```
+## Technologies Used
 
-### Compiles and hot-reloads for development
+*   **Frontend:**
+    *   Vue.js
+    *   Vue Router
+    *   Vuex
+    *   Axios
+    *   nprogress
+    *   vuelidate
+    *   vuejs-datepicker
+*   **Development Tools:**
+    *   Vue CLI
+    *   ESLint
+    *   Prettier
+    *   JSON Server
 
-```
-npm run serve
-```
+## Installation and Usage
 
-### Compiles and minifies for production
+1.  Clone the repository: `git clone https://github.com/your-username/EventServiceWebApp.git`
+2.  Install dependencies: `npm install`
+3.  Start the development server: `npm run serve`
+4.  Build for production: `npm run build`
 
-```
-npm run build
-```
+## Project Structure
 
-### Lints and fixes files
-
-```
-npm run lint
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
-## Git commands for creating new functions
-
-### Create new branch
-
-```
-git checkout -b <branch-name>
-```
-
-### Push to new branch
-
-```
-git add .
-git commit -m "add server.js"
-git push --set-upstream origin <branch-name>
-```
-
-### Merge that new branch
-
-```
-git checkout <main-branch-name>
-git merge <branch-name>
-git push
-git branch -d <branch-name>
-```
-
-## Framework
-
-1. UI/UX
-
-   - nprogress
-   - vuelidate
-   - vuejs-datepicker
-
-1. store management
-
-   - vuex
-
-1. vue-router
-1. Prettier + ESLint
-1. axios
+*   `src/`: Contains the Vue.js application source code.
+    *   `components/`: Reusable Vue components.
+    *   `store/`: Vuex store modules.
+    *   `views/`: Page components.
+*   `public/`: Static assets.
+*   `server.js`: Node.js server for serving the application.
 
 ## Concept
 
@@ -84,14 +59,16 @@ git branch -d <branch-name>
 1. Error messages
 1. Reusable components
 
-## Functions
+## Future Enhancements
 
-1. Create event
-   - form validation
-1. List events
-1. Show event
+*   Implement mixins for code reusability.
+*   Add filters for data manipulation.
+*   Enhance event management with features like editing and deleting events.
+*   Improve UI/UX with more interactive elements.
 
-## To be implemented
+## Contributing
 
-1. mixins
-1. filters
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
